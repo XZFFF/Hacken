@@ -24,7 +24,8 @@ class Hacker extends Base
                 ->where(1)
                 ->select();
         } catch (PDOException $e) {
-            return $this->apireturn('-1', '数据库错误', '');
+//          return $this->apireturn('-1', '数据库错误', '');
+            return $this->apireturn('-1',$e->getMessage(), '');
         }
         return $this->apireturn('0', '操作成功', $rel);
     }

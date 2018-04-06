@@ -3,52 +3,128 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>hackliebiao</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.hack_box{
+				margin: 10px 0;
+				position: relative;display: block;background: #539CFF;color: #FFFFFF;padding: 10px;border-radius:10px ;
+			}
+			.hack_box div{
+				color: #FFFFFF;margin: 5px 0;
+			}
+			.hack_box p{color: #FFFFFF;}
+			.hack_title{
+				font-size: 30px;color: #FFFFFF;margin-right: 10px;
+			}
+			.hack_sex{
+				height: 30px;margin-right: 10px;
+			}
+			.item{
+				background: #FFFFFF;color:#999999;font-size: 13px;margin: 0 2px;
+			}
+			.role{color: #999999;background: #FFFFFF;padding: 5px 10px;border-radius:10px ;}
+			.status{
+				position: absolute;top: 10px;right: 15px;height: 30px;
+			}
+		</style>
 	</head>
 
-	<body>
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">hack列表</h1>
-		</header>
-		<div class="mui-content">
-		    <ul>
-		    	<li>
-		    		<div class="">
-		    			
+	<body style="background: #B9E3FF;">
+		<div class="mui-content" style="background: #B9E3FF;">
+		    <div class="" style="width:80%;margin:20px auto;background:#F3FAFF;height: 40px;border-radius:20px;padding: 10px 20px;">
+		    	<img src="../../imgs/search.png" style="height: 100%;" />
+		    </div>
+		    <p style="color: #FFFFFF;text-align: center;font-size: 35px;">Hackers</p>
+		    <ul id="hack_list" style="width: 80%;background: #FFFFFF;margin: 0 auto;border-radius:10px;padding: 15px;">
+		    	<li class="hack_box">
+		    		<p><span class="hack_title">title</span><img class="hack_sex" src="../../imgs/man.png"><span class="role" style="">wang</span></p>
+		    		<div>
+		    			<span class="item">HTML</span>
+		    			<span class="item">CSS</span>
 		    		</div>
+		    		<div>
+		    			<span class="item">Tel：<span>12233455</span></span>
+		    			<span class="item">QQ：<span>12345667</span></span>
+		    		</div>
+		    		<p>
+		    			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
+		    		</p>
+		    		<img class="status" src="../../imgs/busy.png"/>
 		    	</li>
 		    </ul>
 		</div>
+		<nav class="mui-bar mui-bar-tab">
+		        <a class="mui-tab-item">
+		            <img src="../../imgs/part1_on.png"/>
+		        </a>
+		        <a class="mui-tab-item">
+		            <img src="../../imgs/part2_off.png"/>
+		        </a>
+		        <a class="mui-tab-item">
+		            <img src="../../imgs/part3_off.png"/>
+		        </a>
+		    </nav>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
-		</script>
-		<script type="text/javascript">
 			window.onload=function() {
-//				alert('f')
 				getHackerList();
 			}
 			function  getHackerList () {
-					mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/user/getuserinfo',{
-			data:"",
-			dataType:'json',//服务器返回json格式数据
-			type:'post',//HTTP请求类型
-			timeout:10000,//超时时间设置为10秒；
-			headers:{'Content-Type':'application/json'},	              
-			success:function(data){
-				//服务器返回响应，根据响应结果，分析是否登录成功；
-				
-			},
-			error:function(xhr,type,errorThrown){
-				//异常处理；
-				console.log(type);
+					mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/hacker/gethacker',{
+						data:"",
+						dataType:'json',//服务器返回json格式数据
+						type:'Get',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/json'},	              
+						success:function(data){
+							drawData(data.data);							
+						},
+					});
 			}
-		});
+			function drawData (str) {
+				var hackList=document.getElementById("hack_list");
+				hackList.innerHTML="";
+				for(var i=0;i<str.length;i++){
+					var data=str[i];
+					var id=data.id;
+					var realname=data.realname;
+					var gender=data.gender;
+					var genderSrc="../../imgs/man.png";
+					if(gender=="0"){
+						genderSrc="../../imgs/woman.png"
+					}
+					var role=data.role||"";
+					alert(role)
+					var tel=data.tel||"";
+					var qq=data.qq||"";
+					var status=data.status;
+					var statusSrc="../../imgs/busy.png";
+					if(status==0){
+						statusSrc="../../imgs/wait.png"
+					}
+					var skill1=data.skill1||"";
+					var skill2=data.skill2||"";
+					var skill3=data.skill3||"";
+					var skill4=data.skill4||"";
+					var skill5=data.skill5||"";
+					var skill6=data.skill6||"";
+					var resume=data.resume||"";
+					var oli=document.createElement("li");
+					oli.className="hack_box";
+					oli.innerHTML="<p><span class=\"hack_title\">"+realname+"</span><img class=\"hack_sex\" src=\""+genderSrc+"\"><span class=\"role\">"+role+"</span></p>"
+					+"<div><span class=\"item\">"+skill1+"</span><span class=\"item\">"+skill2+"</span><span class=\"item\">"+skill3+"</span><span class=\"item\">"+skill4+"</span><span class=\"item\">"+skill5+"</span><span class=\"item\">"
+					+skill6+"</span></div>"+
+		    		"<div><span class=\"item\">Tel：<span>"+tel+"</span></span>"+
+		    			"<span class=\"item\">QQ：<span>"+qq+"</span></span></div>"+
+		    		"<p>"+resume+"</p>"+
+		    		"<img class=\"status\" src=\""+statusSrc+"\"/>";
+		    		hackList.appendChild(oli);
+				}
 			}
-		
+			
 		</script>
 	</body>
 
