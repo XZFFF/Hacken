@@ -38,7 +38,11 @@ class Hacker extends Base
     {
         $keyword = $request->post('keyword');
         try {
+            // 密码不可查
             $rel = Db::name('user')
+                ->field('id, realname, gender, role, tel, qq, wechat,
+                 status, read, skill1, skill2, skill3, skill4, skill5,
+                 skill6, resume, createtime')
                 ->where('skill1|skill2|skill3|skill4|skill5|skill6', 'like', '%'.$keyword.'%')
                 ->select();
         } catch (PDOException $e) {
