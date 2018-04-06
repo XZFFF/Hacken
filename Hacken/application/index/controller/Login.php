@@ -30,7 +30,7 @@ class Login extends Base
         $createtime = date("Y-m-d H:i:s", time());
         $info = Db::name('user')->where(['username' => $username])->find();
         if (!empty($info)) {
-            return $this->apireturn('-1', 'Exist username', '');
+            return $this->apireturn('-1', '用户名已存在', '');
         }
         try {
             $rel = Db::name('user')
@@ -42,9 +42,9 @@ class Login extends Base
                     'gender' => $gender,
                     'createtime' => $createtime]);
         } catch (PDOException $e) {
-            return $this->apireturn('-2', $e->getMessage(), '');
+            return $this->apireturn('-2', '数据库错误', '');
         }
-        return $this->apireturn('0', 'Success', $rel);
+        return $this->apireturn('0', '操作成功', $rel);
     }
 
     /**
@@ -63,10 +63,10 @@ class Login extends Base
             ->where(['username' => $username, 'password' => $pwd])
             ->find();
         if (empty($rel)) {
-            return $this->apireturn('-1', 'Wrong username or password.', $rel);
+            return $this->apireturn('-1', '用户名或密码错误', $rel);
         } else {
             Session::set('hacker', $rel);
-            return $this->apireturn('0', 'Success', $rel);
+            return $this->apireturn('0', '操作成功', $rel);
         }
     }
 

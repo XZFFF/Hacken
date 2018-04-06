@@ -53,17 +53,16 @@ class User extends Base
                 'resume' => $resume
             ]);
         } catch (PDOException $e) {
-            return $this->apireturn('-1', $e->getMessage(), '');
+            return $this->apireturn('-1', '数据库错误', '');
         }
-        return $this->apireturn('0', 'Success', $rel);
+        return $this->apireturn('0', '操作成功', $rel);
     }
 
     /**
      * 获取用户信息
-     * @param Request $request
      * @return \think\response\Json
      */
-    public function getuserinfo(Request $request)
+    public function getuserinfo()
     {
         // 判断登录状态
         if(empty(Session::has('hacker'))) {
@@ -74,18 +73,15 @@ class User extends Base
         try {
             $rel = Db::name('user')
                 ->where(['id' => $uid])
-//                ->alias('u')
-//                ->join('idea i','u.id=i.uid')
-//                ->where(['user.id' => $uid])
                 ->find();
             $idea = Db::name('idea')
                 ->where(['uid' => $uid])
                 ->find();
             $rel['idea'] = $idea;
         } catch (PDOException $e) {
-            return $this->apireturn('-1', $e->getMessage(), '');
+            return $this->apireturn('-1', '数据库错误', '');
         }
-        return $this->apireturn('0', 'Success', $rel);
+        return $this->apireturn('0', '操作成功', $rel);
     }
 
 }

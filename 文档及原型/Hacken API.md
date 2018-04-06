@@ -82,14 +82,6 @@
 
 
 
-
-
-
-
-
-
-
-
 #### 获取用户个人信息
 
 > GET user/getuserinfo
@@ -138,14 +130,6 @@
 
 
 
-
-
-
-
-
-
-
-
 #### 创建新idea
 
 > POST idea/createidea
@@ -163,6 +147,37 @@
     "data": 1
 }
 ```
+
+
+
+#### 修改idea信息
+
+> POST idea/editidea
+
+| 参数    | 参数类型 | 备注      |
+| ------- | -------- | --------- |
+| iid     |          | 这里是iid |
+| title   |          |           |
+| summary |          | 个人简历  |
+| need    |          | idea需求  |
+
+```json
+{
+    "errcode": "0",
+    "errmsg": "操作成功",
+    "data": 1
+}
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
