@@ -6,13 +6,60 @@
 		<title>个人信息修改</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.mui-input-row{
+				width: 90%;margin: 0 auto;
+			}
+		</style>
 	</head>
 	<body style="background: #B9E3FF;">
-
 		<div class="mui-content" style="background: #B9E3FF;">
-			<div class="" style="">
-				2
+			<div class="" style="width: 85%;margin: 20px auto;background: #FFFFFF;border-radius:10px ;">
+				<p style="text-align: center;padding:10px;font-size: 25px;color: #282828;">个人信息修改</p>
+				<p style="font-size: 20px;background: #9AD7FF;padding: 10px;color: #FFFFFF;">个人基本信息</p>
+				<div class="mui-input-row" style="width: 90%;margin: 0 auto;">
+			        <label>姓名</label>
+			    	<input type="text" id="realname" class="mui-input-clear">
+			    </div>
+			    <div class="mui-input-row" style="">
+			        <label>性别</label>
+			    	<div class="mui-input-row mui-radio mui-left" style="margin-left:-15%;width: 30%;display: inline-block;">
+						<label>男</label>
+						<input name="sex" type="radio" value="1">
+					</div> 
+			    	<div class="mui-input-row mui-radio mui-left" style="width: 30%;display: inline-block;">
+						<label>女</label>
+						<input name="sex" type="radio" value="0">
+					</div> 
+			    </div>
+			    <div class="mui-input-row">
+			        <label>Tel</label>
+			    	<input type="text" id="tel" class="mui-input-clear">
+			    </div>
+			    <div class="mui-input-row">
+			        <label>QQ</label>
+			    	<input type="text" id="qq" class="mui-input-clear">
+			    </div>
+			    <!--<div class="mui-input-row">
+			        <label>微信</label>
+			    	<input type="text" id="wechat" class="mui-input-clear">
+			    </div>-->
+			    <p style="font-size: 20px;background: #9AD7FF;padding: 10px;color: #FFFFFF;">我的卡片</p>
+				<div class="mui-input-row">
+			        <label>身份标签</label>
+			    	<input type="text" id="qq" class="mui-input-clear">
+			    </div>
+			    <div class="mui-input-row">
+			        <label>技能标签</label>
+			    	<input type="text" id="qq" class="mui-input-clear" value="HTML CSS JS ">
+			    </div>
+			    <div class="mui-input-row">
+			        <p style="color: #282828;margin-left: 13px;font-size: 16px;">个人简介</p>
+			    	<p style="margin-left: 15px;">我是一个好人</p>
+			    </div>
+			    
 			</div>
+			<button style="width: 60%;background: #138CDD;color: #FFFFFF;border: none;margin-left:20%;height: 40px;font-size: 20px;">确认修改</button>
 		    <!--<div class="mui-input-row">
 		        <label>姓名</label>
 		    	<input type="text" id="realname" class="mui-input-clear">
