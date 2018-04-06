@@ -5,11 +5,11 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="../../../../../css/mui.min.css" rel="stylesheet" />
+		<link href="__CSS__/mui.min.css" rel="stylesheet" />
 	</head>
 
 	<body>
-		<script src="../../js/mui.min.js"></script>
+		<script src="__JS__/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
@@ -19,7 +19,7 @@
 				getHackerList();
 			}
 			function  getHackerList () {
-					mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/user/getuserinfo',{
+					mui.ajax('__PANEL__/user/getuserinfo',{
 			data:"",
 			dataType:'json',//服务器返回json格式数据
 			type:'post',//HTTP请求类型

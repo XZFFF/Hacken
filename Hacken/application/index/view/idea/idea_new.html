@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__CSS__/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<script src="__JS__/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script>
+			window.onload=function() {
+				ideaPublishFn();
+			}
+			function ideaPublishFn () {
+				mui.ajax('__PANEL__/idea/createidea',{
+						data:{title:"idea1",
+							summary:"项目简介",
+							need:""  },
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/json'},	              
+						success:function(data){
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							
+						},
+						error:function(xhr,type,errorThrown){
+							//异常处理；
+							console.log(type);
+						}
+					});
+			}
+		</script>
+	</body>
+</html>
