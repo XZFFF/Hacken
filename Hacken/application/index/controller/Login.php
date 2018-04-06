@@ -28,10 +28,9 @@ class Login extends Base
         $realname = $request->post('realname');
         $gender = $request->post('gender');
         $createtime = date("Y-m-d H:i:s", time());
-        $rel = array();
         $info = Db::name('user')->where(['username' => $username])->find();
         if (!empty($info)) {
-            return $this->apireturn('-1', 'Exist username', $rel);
+            return $this->apireturn('-1', 'Exist username', '');
         }
         try {
             $rel = Db::name('user')
@@ -43,7 +42,7 @@ class Login extends Base
                     'gender' => $gender,
                     'createtime' => $createtime]);
         } catch (PDOException $e) {
-            return $this->apireturn('-2', $e->getMessage(), $rel);
+            return $this->apireturn('-2', $e->getMessage(), '');
         }
         return $this->apireturn('0', 'Success', $rel);
     }
