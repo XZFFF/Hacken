@@ -19,13 +19,13 @@
 				<p style="font-size: 20px;background: #9AD7FF;padding: 10px;color: #FFFFFF;">个人基本信息</p>
 				<div class="mui-input-row" style="width: 90%;margin: 0 auto;">
 			        <label>姓名</label>
-			    	<input type="text" id="realname" class="mui-input-clear">
+			    	<input type="text" id="realname" value="王玉珏" class="mui-input-clear">
 			    </div>
 			    <div class="mui-input-row" style="">
 			        <label>性别</label>
 			    	<div class="mui-input-row mui-radio mui-left" style="margin-left:-15%;width: 30%;display: inline-block;">
 						<label>男</label>
-						<input name="sex" type="radio" value="1">
+						<input name="sex" type="radio" value="1" checked="checked">
 					</div> 
 			    	<div class="mui-input-row mui-radio mui-left" style="width: 30%;display: inline-block;">
 						<label>女</label>
@@ -34,11 +34,11 @@
 			    </div>
 			    <div class="mui-input-row">
 			        <label>Tel</label>
-			    	<input type="text" id="tel" class="mui-input-clear">
+			    	<input type="text" value="17656765432" id="tel" class="mui-input-clear">
 			    </div>
 			    <div class="mui-input-row">
 			        <label>QQ</label>
-			    	<input type="text" id="qq" class="mui-input-clear">
+			    	<input type="text" id="qq" value="234323456" class="mui-input-clear">
 			    </div>
 			    <!--<div class="mui-input-row">
 			        <label>微信</label>
@@ -47,7 +47,7 @@
 			    <p style="font-size: 20px;background: #9AD7FF;padding: 10px;color: #FFFFFF;">我的卡片</p>
 				<div class="mui-input-row">
 			        <label>身份标签</label>
-			    	<input type="text" id="qq" class="mui-input-clear">
+			    	<input type="text" id="role" class="mui-input-clear" value="技术宅男">
 			    </div>
 			    <div class="mui-input-row">
 			        <label>技能标签</label>
@@ -59,7 +59,7 @@
 			    </div>
 			    
 			</div>
-			<button style="width: 60%;background: #138CDD;color: #FFFFFF;border: none;margin-left:20%;height: 40px;font-size: 20px;">确认修改</button>
+			<button id="change_btn" style="width: 60%;background: #138CDD;color: #FFFFFF;border: none;margin-left:20%;height: 40px;font-size: 20px;">确认修改</button>
 		    <!--<div class="mui-input-row">
 		        <label>姓名</label>
 		    	<input type="text" id="realname" class="mui-input-clear">
@@ -99,25 +99,26 @@
 		    </div>-->
 		    
 		</div>
-		<nav class="mui-bar mui-bar-tab">
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part1_off.png"/>
+	<nav class="mui-bar mui-bar-tab">
+		        <a class="mui-tab-item" id="part1">
+		            <img style="width: 30%;" src="../../imgs/part1_on.png"/>
 		        </a>
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part2_off.png"/>
+		        <a class="mui-tab-item" id="part2">
+		            <img style="width: 30%;" src="../../imgs/part2_off.png"/>
 		        </a>
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part3_on.png"/>
+		        <a class="mui-tab-item" id="part3">
+		            <img style="width: 30%;" src="../../imgs/part3_off.png"/>
 		        </a>
 		    </nav>
+		<script src="../../js/common.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
 		<script>
 			window.onload=function() {
-				getMyInfoFn();
-//				changeInfoFn();
+//				getMyInfoFn();
+				changeInfoFn();
 			}
 			function getMyInfoFn () {
 				mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/user/getuserinfo',{
@@ -155,25 +156,31 @@
 				resume.value=str.resume;
 			}
 			function changeInfoFn () {
-				mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/user/edituserinfo',{
-					data:{role:"后台",tel:"1",qq:"11",wechat:"12",resume:"jianjie",skill1:"",skill2:"",
-					skill3:"",
-					skill4:"",
-					skill5:"",
-					skill6:"",},
-					dataType:'json',//服务器返回json格式数据
-					type:'post',//HTTP请求类型
-					timeout:10000,//超时时间设置为10秒；
-					headers:{'Content-Type':'application/json'},	              
-					success:function(data){
-						//服务器返回响应，根据响应结果，分析是否登录成功；
-						
-					},
-					error:function(xhr,type,errorThrown){
-						//异常处理；
-						console.log(type);
-					}
-				});
+				document.getElementById("change_btn").onclick=function  () {
+					mui.toast("修改成功！");
+					setTimeout(function  () {
+						mui.openWindow("mine_info.html")
+					},2000);
+				}
+//				mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/user/edituserinfo',{
+//					data:{role:"后台",tel:"1",qq:"11",wechat:"12",resume:"jianjie",skill1:"",skill2:"",
+//					skill3:"",
+//					skill4:"",
+//					skill5:"",
+//					skill6:"",},
+//					dataType:'json',//服务器返回json格式数据
+//					type:'post',//HTTP请求类型
+//					timeout:10000,//超时时间设置为10秒；
+//					headers:{'Content-Type':'application/json'},	              
+//					success:function(data){
+//						//服务器返回响应，根据响应结果，分析是否登录成功；
+//						
+//					},
+//					error:function(xhr,type,errorThrown){
+//						//异常处理；
+//						console.log(type);
+//					}
+//				});
 			}
 		</script>
 	</body>

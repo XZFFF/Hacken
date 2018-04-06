@@ -6,6 +6,7 @@
 		<title>hackliebiao</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/common.css" />
 		<style>
 			.hack_box{
 				margin: 10px 0;
@@ -37,8 +38,8 @@
 		    	<img src="../../imgs/search.png" style="height: 100%;" />
 		    </div>
 		    <p style="color: #FFFFFF;text-align: center;font-size: 35px;">Hackers</p>
-		    <ul id="hack_list" style="width: 80%;background: #FFFFFF;margin: 0 auto;border-radius:10px;padding: 15px;">
-		    	<li class="hack_box">
+		    <ul id="hack_list" style="width: 80%;background: #FFFFFF;margin: 0 auto;border-radius:10px;padding:5px 10px;">
+		    	<!--<li class="hack_box">
 		    		<p><span class="hack_title">title</span><img class="hack_sex" src="../../imgs/man.png"><span class="role" style="">wang</span></p>
 		    		<div>
 		    			<span class="item">HTML</span>
@@ -52,20 +53,21 @@
 		    			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
 		    		</p>
 		    		<img class="status" src="../../imgs/busy.png"/>
-		    	</li>
+		    	</li>-->
 		    </ul>
 		</div>
 		<nav class="mui-bar mui-bar-tab">
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part1_on.png"/>
+		        <a class="mui-tab-item" id="part1">
+		            <img style="width: 30%;" src="../../imgs/part1_on.png"/>
 		        </a>
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part2_off.png"/>
+		        <a class="mui-tab-item" id="part2">
+		            <img style="width: 30%;" src="../../imgs/part2_off.png"/>
 		        </a>
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part3_off.png"/>
+		        <a class="mui-tab-item" id="part3">
+		            <img style="width: 30%;" src="../../imgs/part3_off.png"/>
 		        </a>
 		    </nav>
+		<script src="../../js/common.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()

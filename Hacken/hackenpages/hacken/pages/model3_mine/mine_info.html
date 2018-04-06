@@ -40,57 +40,20 @@
 			    </div>
 			    
 			</div>
-			<button style="width: 60%;background: #138CDD;color: #FFFFFF;border: none;margin-left:20%;height: 40px;font-size: 20px;">修改信息</button>
-		    <!--<div class="mui-input-row">
-		        <label>姓名</label>
-		    	<input type="text" id="realname" class="mui-input-clear">
-		    </div>
-		    <div class="mui-input-row">
-		        <label>性别</label>
-		    	<div class="mui-input-row mui-radio mui-left" style="margin-left:-15%;width: 30%;display: inline-block;">
-					<label>男</label>
-					<input name="sex" type="radio" value="1">
-				</div> 
-		    	<div class="mui-input-row mui-radio mui-left" style="width: 30%;display: inline-block;">
-					<label>女</label>
-					<input name="sex" type="radio" value="0">
-				</div> 
-		    </div>
-		     <div class="mui-input-row">
-		        <label>Tel</label>
-		    	<input type="text" id="tel" class="mui-input-clear">
-		    </div>
-		    <div class="mui-input-row">
-		        <label>QQ</label>
-		    	<input type="text" id="qq" class="mui-input-clear">
-		    </div>
-		    <div class="mui-input-row">
-		        <label>微信</label>
-		    	<input type="text" id="wechat" class="mui-input-clear">
-		    </div>
-		    <div class="mui-input-row">
-		        <label>技能标签</label>
-		    	<input type="text" id="skill" class="mui-input-clear">
-		    </div>
-		    <div class="mui-input-row">
-		    	<label>个人简介</label>
-		    </div>
-		    <div class="mui-input-row">
-		    	<textarea id="resume"></textarea>
-		    </div>-->
-		    
+			<button id="change_btn" style="width: 60%;background: #138CDD;color: #FFFFFF;border: none;margin-left:20%;height: 40px;font-size: 20px;">修改信息</button>
 		</div>
 		<nav class="mui-bar mui-bar-tab">
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part1_off.png"/>
+		        <a class="mui-tab-item" id="part1">
+		            <img style="width: 30%;" src="../../imgs/part1_on.png"/>
 		        </a>
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part2_off.png"/>
+		        <a class="mui-tab-item" id="part2">
+		            <img style="width: 30%;" src="../../imgs/part2_off.png"/>
 		        </a>
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part3_on.png"/>
+		        <a class="mui-tab-item" id="part3">
+		            <img style="width: 30%;" src="../../imgs/part3_off.png"/>
 		        </a>
 		    </nav>
+		<script src="../../js/common.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
@@ -99,6 +62,7 @@
 			window.onload=function() {
 				getMyInfoFn();
 //				changeInfoFn();
+				changeFn();
 			}
 			function getMyInfoFn () {
 				mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/user/getuserinfo',{
@@ -155,6 +119,11 @@
 						console.log(type);
 					}
 				});
+			}
+			function changeFn () {
+				document.getElementById("change_btn").onclick=function() {
+					mui.openWindow("mine_change.html");
+				}
 			}
 		</script>
 	</body>

@@ -10,7 +10,7 @@
 
 	<body style="background: #B9E3FF;">
 		<div class="mui-content" style="background: #B9E3FF;">
-		    <div class="" style="width:80%;margin:20px auto;background:#F3FAFF;height: 40px;border-radius:20px;padding: 10px 20px;">
+		    <div id="search_div" style="width:80%;margin:20px auto;background:#F3FAFF;height: 40px;border-radius:20px;padding: 10px 20px;">
 		    	<img src="../../imgs/search.png" style="height: 100%;" />
 		    </div>
 		    <p style="color: #FFFFFF;text-align: center;font-size: 35px;">Ideas</p>
@@ -39,19 +39,29 @@
 		    </ul>
 		</div>
 		<nav class="mui-bar mui-bar-tab">
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part1_off.png"/>
+		        <a class="mui-tab-item" id="part1">
+		            <img style="width: 30%;" src="../../imgs/part1_on.png"/>
 		        </a>
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part2_on.png"/>
+		        <a class="mui-tab-item" id="part2">
+		            <img style="width: 30%;" src="../../imgs/part2_off.png"/>
 		        </a>
-		        <a class="mui-tab-item">
-		            <img src="../../imgs/part3_off.png"/>
+		        <a class="mui-tab-item" id="part3">
+		            <img style="width: 30%;" src="../../imgs/part3_off.png"/>
 		        </a>
 		    </nav>
+		<script src="../../js/common.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
+			window.onload=function() {
+				jumpPage();
+			}
+			function jumpPage () {
+				var btn=document.getElementById("search_div");
+				btn.onclick=function () {
+					mui.openWindow("idea_search.html");
+				}
+			}
 		</script>
 	</body>
 
