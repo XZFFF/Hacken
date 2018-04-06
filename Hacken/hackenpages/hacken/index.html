@@ -93,7 +93,7 @@
 			timeout:10000,//超时时间设置为10秒；	              
 			success:function(data){
 				if(data.errcode==0){
-//					mui.openWindow("pages/model3_mine/mine_change.html")
+					mui.openWindow("pages/model3_mine/mine_change.html")
 				}
 				
 			},
@@ -124,7 +124,6 @@
 		var pwd=mui("#new_password")[0];
 		var realName=mui("#realname")[0];
 		var sexArr=document.getElementsByName("sex");
-//		alert(sexArr.length);
 		var sex="";
 		for(var i=0;i<sexArr.length;i++){
 			if(sexArr[i].checked){
@@ -147,7 +146,8 @@
 				if(data.errcode==0){
 					mui.toast("注册成功");
 					setTimeout(function  () {
-						mui.openWindow("index.html")
+						var loginDiv=mui("#login_div")[0].style.display="block";
+			var siginDiv=mui("#register_div")[0].style.display="none";
 					},2000);
 				}
 			},
