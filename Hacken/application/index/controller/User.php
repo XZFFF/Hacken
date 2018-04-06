@@ -71,17 +71,28 @@ class User extends Base
         $uid = Session::get('hacker.id');
 
         try {
+            // TODO 密码不可查
             $rel = Db::name('user')
                 ->where(['id' => $uid])
                 ->find();
+            // 参与的idea
             $idea = Db::name('idea')
                 ->where(['uid' => $uid])
+                ->whereOr('user1|user2|user3|user4|user5|user6', '=', $uid)
                 ->find();
             $rel['idea'] = $idea;
+            $news = Db::name('news')
+                ->where(['uid' => $uid, 'status' => 0])
+                ->whereOr(['iuid' => $uid])
+                ->select();
+            $rel['news'] = $news;
         } catch (PDOException $e) {
             return $this->apireturn('-1', '数据库错误', '');
         }
         return $this->apireturn('0', '操作成功', $rel);
     }
+
+    // TODO Hacker信息流
+    // TODO Hacker搜索
 
 }

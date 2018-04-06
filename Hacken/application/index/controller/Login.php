@@ -9,10 +9,10 @@ use think\Session;
 
 class Login extends Base
 {
-//    public function index()
-//    {
-//        return $this->fetch('login/index');
-//    }
+    public function index()
+    {
+        return $this->fetch('login/index');
+    }
 
 
     /**

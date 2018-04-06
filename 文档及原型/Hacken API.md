@@ -89,28 +89,28 @@
 ```json
 {
     "errcode": "0",
-    "errmsg": "Success",
+    "errmsg": "操作成功",
     "data": {
         "id": 1,
         "username": "xzfff",
         "password": "202cb962ac59075b964b07152d234b70",
         "realname": "谢泽丰",
         "gender": 1,
-        "role": "",
-        "tel": null,
-        "qq": null,
+        "role": "后端开发",
+        "tel": "123456",
+        "qq": "567890",
         "wechat": null,
-        "status": 0,
-        "skill1": null,
-        "skill2": null,
+        "status": 1,
+        "skill1": "PHP",
+        "skill2": "MATLAB",
         "skill3": null,
         "skill4": null,
         "skill5": null,
         "skill6": null,
-        "resume": "",
+        "resume": null,
         "createtime": "2018-04-06 21:15:23",
         "idea": {
-            "id": 1,
+            "id": 2,
             "uid": 1,
             "title": "Hacken",
             "summary": "一款帮助Hackathon参赛选手优质化快速化组队的Web产品",
@@ -122,8 +122,18 @@
             "user5": null,
             "user6": null,
             "status": 0,
-            "createtime": "2018-04-06 22:42:49"
-        }
+            "createtime": "2018-04-07 02:03:15"
+        },
+        "news": [
+            {
+                "id": 1,
+                "uid": 2,
+                "iid": 2,
+                "iuid": 1,
+                "status": 0,
+                "createtime": "2018-04-07 02:08:10"
+            }
+        ]
     }
 }
 ```
@@ -186,6 +196,88 @@
     "data": 1
 }
 ```
+
+
+
+#### 获取所有idea
+
+> POST idea/getallidea
+
+```json
+{
+    "errcode": "0",
+    "errmsg": "操作成功",
+    "data": [
+        {
+            "id": 2,
+            "uid": 1,
+            "title": "Hacken",
+            "summary": "一款帮助Hackathon参赛选手优质化快速化组队的Web产品",
+            "need": "前端*1 熟悉前端开发",
+            "user1": 1,
+            "user2": null,
+            "user3": null,
+            "user4": null,
+            "user5": null,
+            "user6": null,
+            "status": 0,
+            "createtime": "2018-04-07 02:03:15"
+        }
+    ]
+}
+```
+
+
+
+#### 申请加入一个idea组
+
+> POST idea/applyidea
+
+| 参数 | 参数类型 | 备注 |
+| ---- | -------- | ---- |
+| iid  |          |      |
+
+```json
+{
+    "errcode": "0",
+    "errmsg": "操作成功",
+    "data": 1
+}
+```
+
+
+
+#### 搜索idea组
+
+| 参数    | 参数类型 | 备注 |
+| ------- | -------- | ---- |
+| keyword |          |      |
+
+```json
+{
+    "errcode": "0",
+    "errmsg": "操作成功",
+    "data": [
+        {
+            "id": 2,
+            "uid": 1,
+            "title": "Hacken",
+            "summary": "一款帮助Hackathon参赛选手优质化快速化组队的Web产品",
+            "need": "前端*1 熟悉前端开发",
+            "user1": 1,
+            "user2": null,
+            "user3": null,
+            "user4": null,
+            "user5": null,
+            "user6": null,
+            "status": 0,
+            "createtime": "2018-04-07 02:03:15"
+        }
+    ]
+}
+```
+
+
 
 
 
