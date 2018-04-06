@@ -83,7 +83,20 @@ class User extends Base
                 ->where(['uid' => $uid])
                 ->whereOr('user1|user2|user3|user4|user5|user6', '=', $uid)
                 ->find();
+            for($i = 1; $i <= 6; $i++) {
+                $userstr = 'user' . $i;
+                if (empty($idea[$userstr])||$idea[$userstr]<=0) {
+                    $i--;
+                    break;
+                }
+                $userid = $idea[$userstr];
+                $idea[$userstr] = Db::name('user')
+                    ->field('id, realname, gender, role, tel, qq, wechat')
+                    ->where(['id' => $userid])->find();
+                $idea['usernum'] = $i;
+            }
             $rel['idea'] = $idea;
+
             $news = Db::name('news')
                 ->where(['uid' => $uid, 'status' => 0])
                 ->whereOr(['iuid' => $uid])

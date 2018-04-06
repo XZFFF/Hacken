@@ -146,6 +146,20 @@ class Idea extends Base
             $rel = Db::name('idea')
                 ->where(1)
                 ->select();
+            foreach ($rel as $key => $value) {
+                for($i = 1; $i <= 6; $i++) {
+                    $userstr = 'user' . $i;
+                    if (empty($rel[$key][$userstr])||$rel[$key][$userstr]<=0) {
+                        $i--;
+                        break;
+                    }
+                    $userid = $rel[$key][$userstr];
+                    $rel[$key][$userstr] = Db::name('user')
+                        ->field('id, realname, gender, role, tel, qq, wechat')
+                        ->where(['id' => $userid])->find();
+                }
+                $rel[$key]['usernum'] = $i;
+            }
         } catch (PDOException $e) {
             return $this->apireturn('-2', '数据库错误', '');
         }

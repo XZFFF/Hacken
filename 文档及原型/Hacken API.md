@@ -92,8 +92,6 @@
     "errmsg": "操作成功",
     "data": {
         "id": 1,
-        "username": "xzfff",
-        "password": "202cb962ac59075b964b07152d234b70",
         "realname": "谢泽丰",
         "gender": 1,
         "role": "后端开发",
@@ -101,6 +99,7 @@
         "qq": "567890",
         "wechat": null,
         "status": 1,
+        "read": 0,
         "skill1": "PHP",
         "skill2": "MATLAB",
         "skill3": null,
@@ -115,23 +114,40 @@
             "title": "Hacken",
             "summary": "一款帮助Hackathon参赛选手优质化快速化组队的Web产品",
             "need": "前端*1 熟悉前端开发",
-            "user1": 1,
-            "user2": null,
+            "user1": {
+                "id": 1,
+                "realname": "谢泽丰",
+                "gender": 1,
+                "role": "后端开发",
+                "tel": "123456",
+                "qq": "567890",
+                "wechat": null
+            },
+            "user2": {
+                "id": 2,
+                "realname": "小官",
+                "gender": 1,
+                "role": null,
+                "tel": null,
+                "qq": null,
+                "wechat": null
+            },
             "user3": null,
             "user4": null,
             "user5": null,
             "user6": null,
             "status": 0,
-            "createtime": "2018-04-07 02:03:15"
+            "createtime": "2018-04-07 06:02:54",
+            "usernum": 2
         },
         "news": [
             {
-                "id": 1,
+                "id": 2,
                 "uid": 2,
                 "iid": 2,
                 "iuid": 1,
-                "status": 0,
-                "createtime": "2018-04-07 02:08:10"
+                "status": 2,
+                "createtime": "2018-04-07 04:03:49"
             }
         ]
     }
@@ -214,14 +230,31 @@
             "title": "Hacken",
             "summary": "一款帮助Hackathon参赛选手优质化快速化组队的Web产品",
             "need": "前端*1 熟悉前端开发",
-            "user1": 1,
-            "user2": null,
+            "user1": {
+                "id": 1,
+                "realname": "谢泽丰",
+                "gender": 1,
+                "role": "后端开发",
+                "tel": "123456",
+                "qq": "567890",
+                "wechat": null
+            },
+            "user2": {
+                "id": 2,
+                "realname": "小官",
+                "gender": 1,
+                "role": null,
+                "tel": null,
+                "qq": null,
+                "wechat": null
+            },
             "user3": null,
             "user4": null,
             "user5": null,
             "user6": null,
             "status": 0,
-            "createtime": "2018-04-07 02:03:15"
+            "createtime": "2018-04-07 06:02:54",
+            "usernum": 2
         }
     ]
 }
