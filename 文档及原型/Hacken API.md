@@ -171,6 +171,22 @@
 
 
 
+#### 删除idea
+
+> POST idea/delidea
+
+| 参数 | 参数类型 | 备注 |
+| ---- | -------- | ---- |
+| iid  |          | iid  |
+
+```json
+{
+    "errcode": "0",
+    "errmsg": "操作成功",
+    "data": 1
+}
+```
+
 
 
 
