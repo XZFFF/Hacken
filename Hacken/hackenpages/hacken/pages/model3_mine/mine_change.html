@@ -9,13 +9,93 @@
 	</head>
 
 	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">个人信息修改</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="mui-input-row">
+		        <label>姓名</label>
+		    	<input type="text" id="realname" class="mui-input-clear">
+		    </div>
+		    <div class="mui-input-row">
+		        <label>性别</label>
+		    	<div class="mui-input-row mui-radio mui-left" style="margin-left:-15%;width: 30%;display: inline-block;">
+					<label>男</label>
+					<input name="sex" type="radio" value="1">
+				</div> 
+		    	<div class="mui-input-row mui-radio mui-left" style="width: 30%;display: inline-block;">
+					<label>女</label>
+					<input name="sex" type="radio" value="0">
+				</div> 
+		    </div>
+		     <div class="mui-input-row">
+		        <label>Tel</label>
+		    	<input type="text" id="tel" class="mui-input-clear">
+		    </div>
+		    <div class="mui-input-row">
+		        <label>QQ</label>
+		    	<input type="text" id="qq" class="mui-input-clear">
+		    </div>
+		    <div class="mui-input-row">
+		        <label>微信</label>
+		    	<input type="text" id="wechat" class="mui-input-clear">
+		    </div>
+		    <div class="mui-input-row">
+		        <label>技能标签</label>
+		    	<input type="text" id="skill" class="mui-input-clear">
+		    </div>
+		    <div class="mui-input-row">
+		    	<label>个人简介</label>
+		    </div>
+		    <div class="mui-input-row">
+		    	<textarea id="resume"></textarea>
+		    </div>
+		    
+		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
 		<script>
 			window.onload=function() {
-				changeInfoFn();
+				getMyInfoFn();
+//				changeInfoFn();
+			}
+			function getMyInfoFn () {
+				mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/user/getuserinfo',{
+					data:"",
+					dataType:'json',//服务器返回json格式数据
+					type:'post',//HTTP请求类型
+					timeout:10000,//超时时间设置为10秒；
+					headers:{'Content-Type':'application/json'},	              
+					success:function(data){
+						if(data.errcode==0){
+							drawData(data.data);
+						}
+					},
+					error:function(xhr,type,errorThrown){
+						console.log(type);
+					}
+				});
+			}
+			function drawData (str) {
+				var realname=mui("#realname")[0];
+				var sexarr=document.getElementsByName("sex");
+				var tel=mui("#tel")[0];
+				var qq=mui("#qq")[0];
+				var wechat=mui("#wechat")[0];
+				var resume=mui("#resume")[0];
+				for(var i=0;i<sexarr.length;i++){
+					if(sexarr[i].value==str.gender){
+						sexarr[i].checked="checked";
+					}
+				}
+				realname.value=str.realname;
+				tel.value=str.tel;
+				qq.value=str.qq;
+				wechat.value=str.wechat;
+				resume.value=str.resume;
 			}
 			function changeInfoFn () {
 				mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/user/edituserinfo',{

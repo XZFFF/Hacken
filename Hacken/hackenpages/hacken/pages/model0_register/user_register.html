@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../../js/mui.min.js"></script>
+    <link href="../../css/mui.min.css" rel="stylesheet"/>
+    <style>
+    	.mui-input-row{height: 40px;line-height: 40px;}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body style="background: #B3E2FF;">
+	<div class="mui-content" style="background: #B3E2FF;">
+		<img src="../../imgs/logo.png" / style="display: block;width: 40%;margin:0 auto;margin-top:10%;">
+		<div id="register_div" style="position:relative;margin: 0 auto;border-radius:10px ;padding:20px;margin-top: -15%;width: 80%;background: #FFFFFF;">
+			<p style="font-size: 30px;font-weight: 700;">Sign Up 注册</p>
+			<div class="mui-input-row">
+				<p>Username 用户名</p>
+			</div>
+			<div class="mui-input-row">
+				<input id="new_username" type="text" style="border: none;border-bottom: 1px solid #98D9FF;" value="10" id="username" class="mui-input-clear">
+			</div>
+			<div class="mui-input-row">
+				<p>Password 密码</p>
+			</div>
+			<div class="mui-input-row">
+				<input id="new_password" type="password" style="border: none;border-bottom: 1px solid #98D9FF;" value="10" id="password" class="mui-input-password">
+			</div>
+			<div class="mui-input-row">
+				<p>RealName 真实姓名</p>
+			</div>
+			<div class="mui-input-row">
+				<input id="realname" type="text" style="border: none;border-bottom: 1px solid #98D9FF;" value="10" id="realname" class="mui-input-clear">
+			</div>
+			<div class="mui-input-row" style="color: #999999;">
+		        <label>性别</label>
+		    	<div class="mui-input-row mui-radio mui-left" style="margin-left:-15%;width: 30%;display: inline-block;">
+					<label>男</label>
+					<input name="sex" type="radio" value="1">
+				</div> 
+		    	<div class="mui-input-row mui-radio mui-left" style="width: 30%;display: inline-block;">
+					<label>女</label>
+					<input name="sex" type="radio" value="0">
+				</div> 
+		    </div>
+			<button id="signin_btn" style="display: block;width: 100%;background: #92E1FF;border: none;color: #FFFFFF;height: 40px;line-height:30px;font-size:20px;border-radius: 20px;">Next</button>
+			<div id="login_btn" style="height: 30px;line-height:8px;color:#999;text-align: center;margin: 0 auto;border-radius:0 0 10px 10px ;padding:20px;width: 70%;background: #D3EBFF;position: absolute;bottom:-37px;left:15%;">Sign In 登陆</div>
+		</div>
+		
+	  <!--<div class="container_box">
+	  	<p>登录</p>
+	  	<div class="mui-input-row">
+        	<label>用户名</label>
+	    	<input type="text" value="10" id="username" class="mui-input-clear" placeholder="请输入用户名">
+	    </div>
+	    <div class="mui-input-row">
+        	<label>密码</label>
+	    	<input type="text" value="10" id="password" class="mui-input-clear" placeholder="请输入用户名">
+	    </div>
+	    <button class="mui-btn-blue" id="login_btn">登录</button>
+	    <p>注册</p>
+	  	<div class="mui-input-row">
+        	<label>用户名</label>
+	    	<input type="text" value="10" id="new_username" class="mui-input-clear" placeholder="请输入用户名">
+	    </div>
+	    <div class="mui-input-row">
+        	<label>密码</label>
+	    	<input type="text" value="10" id="new_password" class="mui-input-clear" placeholder="请输入用户名">
+	    </div>
+	    <div class="mui-input-row">
+        	<label>真实姓名</label>
+	    	<input type="text" value="wangyujue" id="new_truename" class="mui-input-clear" placeholder="请输入用户名">
+	    </div>
+	    性别
+	    <div class="mui-input-row mui-radio">
+		    <label>男</label>
+		    <input name="sex" type="radio" value="1" checked="checked">
+		</div>
+		<div class="mui-input-row mui-radio">
+		    <label>女</label>
+		    <input name="sex" type="radio" value="0">
+		</div>
+	    <button class="mui-btn-blue" id="signin_btn">注册</button>
+	  </div>-->
+	</div>
+<script type="text/javascript">
+	window.onload=function  () {
+		loginBtnFn();
+		signBtnFn();
+	}
+	function loginBtnFn () {
+		var loginBtn=document.getElementById("login_btn");
+		loginBtn.onclick=function() {
+			mui.openWindow("../../index.html")
+		}
+	}
+	function signBtnFn() {
+		var signBtn=document.getElementById("signin_btn");
+		signBtn.onclick=function () {
+			signFn();
+		}
+	}
+	function signFn() {
+		var username=mui("#new_username")[0];
+		var pwd=mui("#new_password")[0];
+		var realName=mui("#new_truename")[0];
+		var sexArr=document.getElementsByName("sex");
+//		alert(sexArr.length);
+		var sex="";
+		for(var i=0;i<sexArr.length;i++){
+			if(sexArr[i].checked){
+				sex=sexArr[i].value;
+			}
+		}
+		mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/login/register',{
+			data:{
+				username:username.value,
+				password:pwd.value,
+				realname:realName.value,
+				gender:sex,
+			},
+			dataType:'json',//服务器返回json格式数据
+			type:'post',//HTTP请求类型
+			timeout:10000,//超时时间设置为10秒；
+			headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				if(data.errcode==0){
+					mui.toast("注册成功");
+					setTimeout(function  () {
+						mui.openWindow("../../index.html")
+					},2000);
+				}
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(type);
+			}
+		});
+	}
+</script>
+</body>
+</html>
