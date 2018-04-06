@@ -3,10 +3,12 @@ namespace app\index\controller;
 
 use think\Controller;
 use think\Session;
+use think\response\Json;
 
 class Base extends Controller
 {
     function __construct() {
+        ob_clean();
         Session::init();
         parent::__construct();
     }
