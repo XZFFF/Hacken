@@ -262,6 +262,29 @@
 
 
 
+#### 更改idea组状态
+
+> POST idea/changestatus
+
+| 参数   | 参数类型 | 备注          |
+| ------ | -------- | ------------- |
+| iid    |          |               |
+| status |          | 0-招募 1-满员 |
+
+```json
+{
+    "errcode": "0",
+    "errmsg": "操作成功",
+    "data": 1
+}
+```
+
+
+
+
+
+
+
 #### 申请加入一个idea组
 
 > POST idea/applyidea

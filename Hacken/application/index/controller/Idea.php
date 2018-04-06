@@ -95,6 +95,37 @@ class Idea extends Base
     }
 
     /**
+     * 更新idea组状态 0-招募 1-满员
+     * @param Request $request
+     * @return \think\response\Json
+     * @throws \think\Exception
+     */
+    public function changestatus(Request $request)
+    {
+        // 判断登录状态
+        if(empty(Session::has('hacker'))) {
+            redirect('login/index');
+        }
+        $uid = Session::get('hacker.id');
+        $iid = $request->post('iid');
+        $status = $request->post('status');
+        $info = Db::name('idea')->where(['id' => $iid])->find();
+        if($uid != $info['uid']) {
+            return $this->apireturn('-1', '权限不足', '');
+        }
+        try {
+            $rel = Db::name('idea')
+                ->where(['id' => $iid])
+                ->update([
+                    'status' => $status
+                ]);
+        } catch (PDOException $e) {
+            return $this->apireturn('-1', '数据库错误', '');
+        }
+        return $this->apireturn('0', '操作成功', $rel);
+    }
+
+    /**
      * 删除自己的idea
      * @param Request $request
      * @return \think\response\Json
