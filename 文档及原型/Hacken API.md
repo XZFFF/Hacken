@@ -201,7 +201,7 @@
 
 #### 获取所有idea
 
-> POST idea/getallidea
+> POST idea/getidea
 
 ```json
 {
@@ -353,9 +353,96 @@
 
 
 
+#### 获取所有hacker信息
+
+> GET hacker/gethacker
+
+```json
+{
+    "errcode": "0",
+    "errmsg": "操作成功",
+    "data": [
+        {
+            "id": 1,
+            "realname": "谢泽丰",
+            "gender": 1,
+            "role": "后端开发",
+            "tel": "123456",
+            "qq": "567890",
+            "wechat": null,
+            "status": 1,
+            "read": 0,
+            "skill1": "PHP",
+            "skill2": "MATLAB",
+            "skill3": null,
+            "skill4": null,
+            "skill5": null,
+            "skill6": null,
+            "resume": null,
+            "createtime": "2018-04-06 21:15:23"
+        },
+        {
+            "id": 2,
+            "realname": "小官",
+            "gender": 1,
+            "role": null,
+            "tel": null,
+            "qq": null,
+            "wechat": null,
+            "status": 1,
+            "read": 1,
+            "skill1": null,
+            "skill2": null,
+            "skill3": null,
+            "skill4": null,
+            "skill5": null,
+            "skill6": null,
+            "resume": null,
+            "createtime": "2018-04-07 02:02:51"
+        }
+    ]
+}
+```
 
 
 
+#### 搜索指定技能的hacker
+
+> POST hacker/selecthacker
+
+| 参数    | 参数类型 | 备注 |
+| ------- | -------- | ---- |
+| keyword |          |      |
+
+```json
+{
+    "errcode": "0",
+    "errmsg": "操作成功",
+    "data": [
+        {
+            "id": 1,
+            "username": "xzfff",
+            "password": "202cb962ac59075b964b07152d234b70",
+            "realname": "谢泽丰",
+            "gender": 1,
+            "role": "后端开发",
+            "tel": "123456",
+            "qq": "567890",
+            "wechat": null,
+            "status": 1,
+            "read": 0,
+            "skill1": "PHP",
+            "skill2": "MATLAB",
+            "skill3": null,
+            "skill4": null,
+            "skill5": null,
+            "skill6": null,
+            "resume": null,
+            "createtime": "2018-04-06 21:15:23"
+        }
+    ]
+}
+```
 
 
 

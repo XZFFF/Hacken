@@ -140,7 +140,7 @@ class Idea extends Base
      * @param Request $request
      * @return \think\response\Json
      */
-    public function getallidea()
+    public function getidea()
     {
         try {
             $rel = Db::name('idea')
@@ -152,7 +152,11 @@ class Idea extends Base
         return $this->apireturn('0', '操作成功', $rel);
     }
 
-    // 搜索idea
+    /**
+     * 搜索idea
+     * @param Request $request
+     * @return \think\response\Json
+     */
     public function selectidea(Request $request)
     {
         $keyword = $request->post('keyword');

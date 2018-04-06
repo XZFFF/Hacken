@@ -71,8 +71,11 @@ class User extends Base
         $uid = Session::get('hacker.id');
 
         try {
-            // TODO 密码不可查
+            // 密码不可查
             $rel = Db::name('user')
+                ->field('id, realname, gender, role, tel, qq, wechat,
+                 status, read, skill1, skill2, skill3, skill4, skill5,
+                 skill6, resume, createtime')
                 ->where(['id' => $uid])
                 ->find();
             // 参与的idea
@@ -91,8 +94,5 @@ class User extends Base
         }
         return $this->apireturn('0', '操作成功', $rel);
     }
-
-    // TODO Hacker信息流
-    // TODO Hacker搜索
 
 }
