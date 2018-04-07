@@ -59,6 +59,7 @@
 			window.onload=function() {
 				jumpPage();
 				drawData();
+//				addFn();
 			}
 			function jumpPage () {
 				var btn=document.getElementById("search_div");
@@ -74,7 +75,8 @@
 						timeout:10000,//超时时间设置为10秒；
 						headers:{'Content-Type':'application/json'},	              
 						success:function(data){
-							drawDataFn(data.data);							
+							drawDataFn(data.data);	
+							
 						},
 					});
 			}
@@ -84,15 +86,16 @@
 				for (var i=0;i<str.length;i++) {
 					str=str[0]
 					var title=str.title;
-var summary=str.summary;	
-var need=str.need;
-//str=str[0];
-//console.log(str)
-var name=str.user1.realname;
-var tel=str.user1.tel;
-var qq=str.user1.qq;
-var oli=document.createElement("li");
-oli.className="pli";
+				var summary=str.summary;	
+				var need=str.need;
+				//str=str[0];
+				//console.log(str)
+				var id=str.id;
+				var name=str.user1.realname;
+				var tel=str.user1.tel;
+				var qq=str.user1.qq;
+				var oli=document.createElement("li");
+				oli.className="pli";
 oli.innerHTML="<p><span class=\"title\" style=\"font-size: 30px;color: #FFFFFF;margin-right: 20px;\">"+title+"</span><span style=\"background: #FFFFFF;padding: 5px 10px;border-radius:10px ;\">"+name+"</span></p>"+
 		    		"<div style=\"color: #FFFFFF;margin: 2px 0;\">"+
 		    			"<p style=\"color: #FFFFFF;margin-bottom: 1px;\">项目简介</p><p style=\"color: #FFFFFF;\">"+summary+"</p>"+
@@ -110,9 +113,34 @@ oli.innerHTML="<p><span class=\"title\" style=\"font-size: 30px;color: #FFFFFF;m
 		    			"<p style=\"margin: 0;color: #FFFFFF;\">Tel: <span>"+tel+"</span></p>"+
 		    			"<p style=\"margin: 0;color: #FFFFFF;\">QQ:<span>"+qq+"</span></p>"+
 		    		"</div>"+
-		    		"<img src=\"../../imgs/more.png\" style=\"position: absolute;top: 0;right: 0;\" />";
+		    		"<img id='"+id+"' class='addBtn' src=\"../../imgs/more.png\" style=\"z-index:999;position: absolute;top: 0;right: 0;\" />";
 		    		oul.appendChild(oli);
+		    		
 				}
+				addFn();
+			}
+			function addFn () {
+//				alert('dd')
+				var adds=document.getElementsByClassName("addBtn");
+				alert(adds.length)
+				for(var i=0;i<adds.length;i++){
+					adds[i].onclick=function() {
+						alert("ss")
+//						clickFn(adds[i].id);
+					}
+				}
+			}
+			function clickFn(id) {
+				mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/idea/applyidea',{
+						data:{iid:id},
+						dataType:'json',//服务器返回json格式数据
+						type:'Get',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/json'},	              
+						success:function(data){
+//							drawData(data.data);							
+						},
+					});
 			}
 		</script>
 	</body>
