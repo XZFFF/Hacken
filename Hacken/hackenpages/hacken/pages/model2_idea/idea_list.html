@@ -90,13 +90,13 @@
 				var need=str.need;
 				//str=str[0];
 				//console.log(str)
-				var id=str.id;
+				var yid=str.id;
 				var name=str.user1.realname;
 				var tel=str.user1.tel;
 				var qq=str.user1.qq;
 				var oli=document.createElement("li");
 				oli.className="pli";
-oli.innerHTML="<p><span class=\"title\" style=\"font-size: 30px;color: #FFFFFF;margin-right: 20px;\">"+title+"</span><span style=\"background: #FFFFFF;padding: 5px 10px;border-radius:10px ;\">"+name+"</span></p>"+
+oli.innerHTML="<p><span class=\"title\" style=\"font-size: 30px;color: #FFFFFF;margin-right: 20px;\">"+title+"</span><span style=\"background: #FFFFFF;padding: 5px 10px;border-radius:10px ;\">"+name+"</span><img style='margin-left: 17px;' id=\""+yid+"\"class='addBtn' src=\"../../imgs/more.png\"/></p>"+
 		    		"<div style=\"color: #FFFFFF;margin: 2px 0;\">"+
 		    			"<p style=\"color: #FFFFFF;margin-bottom: 1px;\">项目简介</p><p style=\"color: #FFFFFF;\">"+summary+"</p>"+
 		    		"</div>"+
@@ -112,8 +112,9 @@ oli.innerHTML="<p><span class=\"title\" style=\"font-size: 30px;color: #FFFFFF;m
 		    		"<div style=\"color: #FFFFFF;margin: 2px 0;\">"+
 		    			"<p style=\"margin: 0;color: #FFFFFF;\">Tel: <span>"+tel+"</span></p>"+
 		    			"<p style=\"margin: 0;color: #FFFFFF;\">QQ:<span>"+qq+"</span></p>"+
-		    		"</div>"+
-		    		"<img id='"+id+"' class='addBtn' src=\"../../imgs/more.png\" style=\"z-index:999;position: absolute;top: 0;right: 0;\" />";
+		    		"</div>";
+		    		addFn();
+//		    		"<img id='"+id+"' class='addBtn' src=\"../../imgs/more.png\" style=\"z-index:999;position: absolute;top: 0;right: 0;\" />";
 		    		oul.appendChild(oli);
 		    		
 				}
