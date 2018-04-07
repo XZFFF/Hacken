@@ -6,6 +6,9 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.pli{position: relative;display: block;background: #539CFF;color: #FFFFFF;padding: 10px;border-radius:10px ;}
+		</style>
 	</head>
 
 	<body style="background: #B9E3FF;">
@@ -14,8 +17,8 @@
 		    	<img src="../../imgs/search.png" style="height: 100%;" />
 		    </div>
 		    <p style="color: #FFFFFF;text-align: center;font-size: 35px;">Ideas</p>
-		    <ul class="" style="width: 80%;background: #FFFFFF;margin: 0 auto;border-radius:10px;padding: 15px;">
-		    	<li style="position: relative;display: block;background: #539CFF;color: #FFFFFF;padding: 10px;border-radius:10px ;">
+		    <ul id="oul" style="width: 80%;background: #FFFFFF;margin: 0 auto;border-radius:10px;padding: 15px;">
+		    	<li class="pli" style="">
 		    		<p><span class="title" style="font-size: 30px;color: #FFFFFF;margin-right: 20px;">title</span><span class="author" style="background: #FFFFFF;padding: 5px 10px;border-radius:10px ;">wang</span></p>
 		    		<p style="color: #FFFFFF;font-size: 17px;">已有人数：<span id="num">3</span></p>
 		    		<div style="color: #FFFFFF;margin: 2px 0;">
@@ -55,11 +58,60 @@
 			mui.init()
 			window.onload=function() {
 				jumpPage();
+				drawData();
 			}
 			function jumpPage () {
 				var btn=document.getElementById("search_div");
 				btn.onclick=function () {
 					mui.openWindow("idea_search.html");
+				}
+			}
+			function drawData () {
+				mui.ajax('http://localhost/Hacken/Hacken/public/index.php/index/idea/getidea',{
+						data:"",
+						dataType:'json',//服务器返回json格式数据
+						type:'Get',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/json'},	              
+						success:function(data){
+							drawDataFn(data.data);							
+						},
+					});
+			}
+			function drawDataFn(str){
+				var oul=document.getElementById("oul");
+				oul.innerHTML="";
+				for (var i=0;i<str.length;i++) {
+					str=str[0]
+					var title=str.title;
+var summary=str.summary;	
+var need=str.need;
+//str=str[0];
+//console.log(str)
+var name=str.user1.realname;
+var tel=str.user1.tel;
+var qq=str.user1.qq;
+var oli=document.createElement("li");
+oli.className="pli";
+oli.innerHTML="<p><span class=\"title\" style=\"font-size: 30px;color: #FFFFFF;margin-right: 20px;\">"+title+"</span><span style=\"background: #FFFFFF;padding: 5px 10px;border-radius:10px ;\">"+name+"</span></p>"+
+		    		"<div style=\"color: #FFFFFF;margin: 2px 0;\">"+
+		    			"<p style=\"color: #FFFFFF;margin-bottom: 1px;\">项目简介</p><p style=\"color: #FFFFFF;\">"+summary+"</p>"+
+		    		"</div>"+
+		    		"<div style=\"color: #FFFFFF;margin: 2px 0;\">"+
+		    			"<p style=\"color: #FFFFFF;margin-bottom: 1px;\">人员需求</p>"+
+		    			"<p style=\"color: #FFFFFF;\">"+need+"</p>"+
+		    		"</div>"+
+		    		"<div style=\"color: #FFFFFF;margin: 2px 0;\">"+
+		    		"<p style=\"color: #FFFFFF;margin-bottom: 1px;\">组内成员</p>"+
+		    		"<p style='color:#fff'>空</p>"+
+//		    			<p style="color: #FFFFFF;" class="summary"><span><span>前端</span> : <span>wang</span></span></p>
+		    		"</div>"+
+		    		"<div style=\"color: #FFFFFF;margin: 2px 0;\">"+
+		    			"<p style=\"margin: 0;color: #FFFFFF;\">Tel: <span>"+tel+"</span></p>"+
+		    			"<p style=\"margin: 0;color: #FFFFFF;\">QQ:<span>"+qq+"</span></p>"+
+		    		"</div>"+
+		    		"<img src=\"../../imgs/more.png\" style=\"position: absolute;top: 0;right: 0;\" />";
+		    		oul.appendChild(oli);
 				}
 			}
 		</script>
